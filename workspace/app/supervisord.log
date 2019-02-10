@@ -1,0 +1,178 @@
+2019-01-27 02:35:46,770 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-01-27 02:35:46,780 INFO supervisord started with pid 1
+2019-01-27 02:35:47,782 INFO spawned: 'sshd' with pid 8
+2019-01-27 02:35:47,785 INFO spawned: 'nginx' with pid 9
+2019-01-27 02:35:47,787 INFO spawned: 'uwsgi' with pid 10
+2019-01-27 02:35:47,793 INFO exited: sshd (exit status 1; not expected)
+2019-01-27 02:35:49,141 INFO spawned: 'sshd' with pid 14
+2019-01-27 02:35:49,142 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-01-27 02:35:49,142 INFO success: uwsgi entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-01-27 02:35:49,151 INFO exited: sshd (exit status 1; not expected)
+2019-01-27 02:35:51,155 INFO spawned: 'sshd' with pid 15
+2019-01-27 02:35:51,170 INFO exited: sshd (exit status 1; not expected)
+2019-01-27 02:35:54,175 INFO spawned: 'sshd' with pid 16
+2019-01-27 02:35:54,184 INFO exited: sshd (exit status 1; not expected)
+2019-01-27 02:35:54,184 INFO gave up: sshd entered FATAL state, too many start retries too quickly
+2019-01-27 02:39:05,312 WARN received SIGTERM indicating exit request
+2019-01-27 02:39:05,312 INFO waiting for nginx, uwsgi to die
+2019-01-27 02:39:06,317 INFO stopped: uwsgi (exit status 0)
+2019-01-27 02:39:06,413 INFO stopped: nginx (exit status 0)
+2019-01-27 02:39:18,201 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-01-27 02:39:18,215 INFO supervisord started with pid 1
+2019-01-27 02:39:19,219 INFO spawned: 'sshd' with pid 8
+2019-01-27 02:39:19,222 INFO spawned: 'nginx' with pid 9
+2019-01-27 02:39:19,226 INFO spawned: 'uwsgi' with pid 10
+2019-01-27 02:39:19,240 INFO exited: sshd (exit status 1; not expected)
+2019-01-27 02:39:19,648 INFO exited: uwsgi (exit status 22; not expected)
+2019-01-27 02:39:20,652 INFO spawned: 'sshd' with pid 12
+2019-01-27 02:39:20,654 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-01-27 02:39:20,657 INFO spawned: 'uwsgi' with pid 13
+2019-01-27 02:39:20,662 INFO exited: sshd (exit status 1; not expected)
+2019-01-27 02:39:20,983 INFO exited: uwsgi (exit status 22; not expected)
+2019-01-27 02:39:22,988 INFO spawned: 'sshd' with pid 14
+2019-01-27 02:39:22,999 INFO spawned: 'uwsgi' with pid 15
+2019-01-27 02:39:23,014 INFO exited: sshd (exit status 1; not expected)
+2019-01-27 02:39:23,409 INFO exited: uwsgi (exit status 22; not expected)
+2019-01-27 02:39:26,417 INFO spawned: 'sshd' with pid 16
+2019-01-27 02:39:26,419 INFO spawned: 'uwsgi' with pid 17
+2019-01-27 02:39:26,430 INFO exited: sshd (exit status 1; not expected)
+2019-01-27 02:39:26,432 INFO gave up: sshd entered FATAL state, too many start retries too quickly
+2019-01-27 02:39:26,842 INFO exited: uwsgi (exit status 22; not expected)
+2019-01-27 02:39:27,844 INFO gave up: uwsgi entered FATAL state, too many start retries too quickly
+2019-01-27 02:40:25,609 WARN received SIGTERM indicating exit request
+2019-01-27 02:40:25,611 INFO waiting for nginx to die
+2019-01-27 02:40:28,617 INFO waiting for nginx to die
+2019-01-27 02:40:31,827 INFO waiting for nginx to die
+2019-01-27 02:40:34,832 INFO waiting for nginx to die
+2019-01-27 02:45:50,264 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-01-27 02:45:50,278 INFO supervisord started with pid 1
+2019-01-27 02:45:51,282 INFO spawned: 'sshd' with pid 8
+2019-01-27 02:45:51,285 INFO spawned: 'nginx' with pid 9
+2019-01-27 02:45:51,288 INFO spawned: 'uwsgi' with pid 10
+2019-01-27 02:45:51,290 INFO exited: sshd (exit status 1; not expected)
+2019-01-27 02:45:51,753 INFO exited: uwsgi (exit status 22; not expected)
+2019-01-27 02:45:52,757 INFO spawned: 'sshd' with pid 12
+2019-01-27 02:45:52,757 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-01-27 02:45:52,759 INFO spawned: 'uwsgi' with pid 13
+2019-01-27 02:45:52,768 INFO exited: sshd (exit status 1; not expected)
+2019-01-27 02:45:53,108 INFO exited: uwsgi (exit status 22; not expected)
+2019-01-27 02:45:55,112 INFO spawned: 'sshd' with pid 14
+2019-01-27 02:45:55,115 INFO spawned: 'uwsgi' with pid 15
+2019-01-27 02:45:55,126 INFO exited: sshd (exit status 1; not expected)
+2019-01-27 02:45:55,429 INFO exited: uwsgi (exit status 22; not expected)
+2019-01-27 02:45:58,434 INFO spawned: 'sshd' with pid 16
+2019-01-27 02:45:58,436 INFO spawned: 'uwsgi' with pid 17
+2019-01-27 02:45:58,445 INFO exited: sshd (exit status 1; not expected)
+2019-01-27 02:45:58,454 INFO gave up: sshd entered FATAL state, too many start retries too quickly
+2019-01-27 02:45:58,744 INFO exited: uwsgi (exit status 22; not expected)
+2019-01-27 02:45:59,746 INFO gave up: uwsgi entered FATAL state, too many start retries too quickly
+2019-01-27 02:46:19,909 WARN received SIGTERM indicating exit request
+2019-01-27 02:46:19,909 INFO waiting for nginx to die
+2019-01-27 02:46:20,982 INFO stopped: nginx (exit status 0)
+2019-01-27 02:47:02,950 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-01-27 02:47:02,962 INFO supervisord started with pid 1
+2019-01-27 02:47:03,966 INFO spawned: 'sshd' with pid 8
+2019-01-27 02:47:03,968 INFO spawned: 'nginx' with pid 9
+2019-01-27 02:47:03,972 INFO spawned: 'uwsgi' with pid 10
+2019-01-27 02:47:03,976 INFO exited: sshd (exit status 1; not expected)
+2019-01-27 02:47:04,297 INFO exited: uwsgi (exit status 22; not expected)
+2019-01-27 02:47:05,301 INFO spawned: 'sshd' with pid 12
+2019-01-27 02:47:05,303 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-01-27 02:47:05,307 INFO spawned: 'uwsgi' with pid 13
+2019-01-27 02:47:05,311 INFO exited: sshd (exit status 1; not expected)
+2019-01-27 02:47:05,899 INFO exited: uwsgi (exit status 22; not expected)
+2019-01-27 02:47:07,904 INFO spawned: 'sshd' with pid 14
+2019-01-27 02:47:07,907 INFO spawned: 'uwsgi' with pid 15
+2019-01-27 02:47:07,948 INFO exited: sshd (exit status 1; not expected)
+2019-01-27 02:47:08,233 INFO exited: uwsgi (exit status 22; not expected)
+2019-01-27 02:47:11,239 INFO spawned: 'sshd' with pid 16
+2019-01-27 02:47:11,243 INFO spawned: 'uwsgi' with pid 17
+2019-01-27 02:47:11,249 INFO exited: sshd (exit status 1; not expected)
+2019-01-27 02:47:11,260 INFO gave up: sshd entered FATAL state, too many start retries too quickly
+2019-01-27 02:47:11,604 INFO exited: uwsgi (exit status 22; not expected)
+2019-01-27 02:47:12,607 INFO gave up: uwsgi entered FATAL state, too many start retries too quickly
+2019-01-27 02:48:29,454 WARN received SIGTERM indicating exit request
+2019-01-27 02:48:29,456 INFO waiting for nginx to die
+2019-01-27 02:48:30,532 INFO stopped: nginx (exit status 0)
+2019-01-27 02:54:27,053 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-01-27 02:54:27,075 INFO supervisord started with pid 1
+2019-01-27 02:54:28,079 INFO spawned: 'sshd' with pid 8
+2019-01-27 02:54:28,083 INFO spawned: 'nginx' with pid 9
+2019-01-27 02:54:28,101 INFO spawned: 'uwsgi' with pid 10
+2019-01-27 02:54:28,117 INFO exited: sshd (exit status 1; not expected)
+2019-01-27 02:54:28,564 INFO exited: uwsgi (exit status 22; not expected)
+2019-01-27 02:54:29,567 INFO spawned: 'sshd' with pid 12
+2019-01-27 02:54:29,569 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-01-27 02:54:29,572 INFO spawned: 'uwsgi' with pid 13
+2019-01-27 02:54:29,579 INFO exited: sshd (exit status 1; not expected)
+2019-01-27 02:54:29,876 INFO exited: uwsgi (exit status 22; not expected)
+2019-01-27 02:54:31,880 INFO spawned: 'sshd' with pid 14
+2019-01-27 02:54:31,882 INFO spawned: 'uwsgi' with pid 15
+2019-01-27 02:54:31,892 INFO exited: sshd (exit status 1; not expected)
+2019-01-27 02:54:32,231 INFO exited: uwsgi (exit status 22; not expected)
+2019-01-27 02:54:35,237 INFO spawned: 'sshd' with pid 16
+2019-01-27 02:54:35,239 INFO spawned: 'uwsgi' with pid 17
+2019-01-27 02:54:35,252 INFO exited: sshd (exit status 1; not expected)
+2019-01-27 02:54:35,253 INFO gave up: sshd entered FATAL state, too many start retries too quickly
+2019-01-27 02:54:35,933 INFO exited: uwsgi (exit status 22; not expected)
+2019-01-27 02:54:36,935 INFO gave up: uwsgi entered FATAL state, too many start retries too quickly
+2019-01-27 02:55:28,153 WARN received SIGTERM indicating exit request
+2019-01-27 02:55:28,153 INFO waiting for nginx to die
+2019-01-27 02:55:29,252 INFO stopped: nginx (exit status 0)
+2019-01-27 23:47:23,591 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-01-27 23:47:23,607 INFO supervisord started with pid 1
+2019-01-27 23:47:24,610 INFO spawned: 'sshd' with pid 8
+2019-01-27 23:47:24,612 INFO spawned: 'nginx' with pid 9
+2019-01-27 23:47:24,615 INFO spawned: 'uwsgi' with pid 10
+2019-01-27 23:47:24,618 INFO exited: sshd (exit status 1; not expected)
+2019-01-27 23:47:26,194 INFO spawned: 'sshd' with pid 14
+2019-01-27 23:47:26,196 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-01-27 23:47:26,197 INFO success: uwsgi entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-01-27 23:47:26,202 INFO exited: sshd (exit status 1; not expected)
+2019-01-27 23:47:28,208 INFO spawned: 'sshd' with pid 15
+2019-01-27 23:47:28,215 INFO exited: sshd (exit status 1; not expected)
+2019-01-27 23:47:31,222 INFO spawned: 'sshd' with pid 16
+2019-01-27 23:47:31,230 INFO exited: sshd (exit status 1; not expected)
+2019-01-27 23:47:31,232 INFO gave up: sshd entered FATAL state, too many start retries too quickly
+2019-01-27 23:48:10,004 WARN received SIGTERM indicating exit request
+2019-01-27 23:48:10,005 INFO waiting for nginx, uwsgi to die
+2019-01-27 23:48:11,010 INFO stopped: uwsgi (exit status 0)
+2019-01-27 23:48:11,117 INFO stopped: nginx (exit status 0)
+2019-01-27 23:50:12,584 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-01-27 23:50:12,595 INFO supervisord started with pid 1
+2019-01-27 23:50:13,598 INFO spawned: 'sshd' with pid 8
+2019-01-27 23:50:13,602 INFO spawned: 'nginx' with pid 9
+2019-01-27 23:50:13,605 INFO spawned: 'uwsgi' with pid 10
+2019-01-27 23:50:13,634 INFO exited: sshd (exit status 1; not expected)
+2019-01-27 23:50:14,969 INFO spawned: 'sshd' with pid 14
+2019-01-27 23:50:14,971 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-01-27 23:50:14,973 INFO success: uwsgi entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-01-27 23:50:14,983 INFO exited: sshd (exit status 1; not expected)
+2019-01-27 23:50:16,988 INFO spawned: 'sshd' with pid 15
+2019-01-27 23:50:16,996 INFO exited: sshd (exit status 1; not expected)
+2019-01-27 23:50:20,003 INFO spawned: 'sshd' with pid 16
+2019-01-27 23:50:20,015 INFO exited: sshd (exit status 1; not expected)
+2019-01-27 23:50:20,018 INFO gave up: sshd entered FATAL state, too many start retries too quickly
+2019-01-27 23:54:02,901 WARN received SIGTERM indicating exit request
+2019-01-27 23:54:02,916 INFO waiting for nginx, uwsgi to die
+2019-01-27 23:54:03,907 INFO stopped: uwsgi (exit status 0)
+2019-01-27 23:54:03,988 INFO stopped: nginx (exit status 0)
+2019-01-27 23:58:25,583 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-01-27 23:58:25,614 INFO supervisord started with pid 1
+2019-01-27 23:58:26,616 INFO spawned: 'sshd' with pid 8
+2019-01-27 23:58:26,618 INFO spawned: 'nginx' with pid 9
+2019-01-27 23:58:26,621 INFO spawned: 'uwsgi' with pid 10
+2019-01-27 23:58:26,663 INFO exited: sshd (exit status 1; not expected)
+2019-01-27 23:58:28,136 INFO spawned: 'sshd' with pid 14
+2019-01-27 23:58:28,137 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-01-27 23:58:28,139 INFO success: uwsgi entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-01-27 23:58:28,164 INFO exited: sshd (exit status 1; not expected)
+2019-01-27 23:58:30,170 INFO spawned: 'sshd' with pid 15
+2019-01-27 23:58:30,179 INFO exited: sshd (exit status 1; not expected)
+2019-01-27 23:58:33,184 INFO spawned: 'sshd' with pid 16
+2019-01-27 23:58:33,196 INFO exited: sshd (exit status 1; not expected)
+2019-01-27 23:58:34,197 INFO gave up: sshd entered FATAL state, too many start retries too quickly
+2019-01-28 00:15:35,584 WARN received SIGTERM indicating exit request
+2019-01-28 00:15:35,632 INFO waiting for nginx, uwsgi to die
+2019-01-28 00:15:36,589 INFO stopped: uwsgi (exit status 0)
+2019-01-28 00:15:36,677 INFO stopped: nginx (exit status 0)

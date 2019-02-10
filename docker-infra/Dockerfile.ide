@@ -1,0 +1,77 @@
+FROM mrsono0/base_project:ide_mate
+
+ENV DEBIAN_FRONTEND noninteractive
+RUN sed -i "s/archive.ubuntu.com/mirror.kakao.com/g" /etc/apt/sources.list
+RUN sed -i "s/archive.canonical.com/mirror.kakao.com/g" /etc/apt/sources.list
+RUN sed -i "s/security.ubuntu.com/mirror.kakao.com/g" /etc/apt/sources.list
+RUN sed -i "s/# deb-src/deb-src/g" /etc/apt/sources.list
+RUN apt-get -y update && \
+    # apt-get -yy upgrade && \
+    apt-get -y install gcc cmake
+
+RUN /opt/conda/bin/conda install conda python=3.6.8 --yes
+
+
+
+ENV CONDA_PACKAGES="\
+    pyyaml \
+    cffi \
+    h5py \
+    requests \
+    pytest \
+    coverage \
+    pylint \
+    pygments \
+    cryptography \
+    pexpect \
+    tornado \
+    jinja2 \
+    mkl \
+    Flask \
+    Flask-SQLAlchemy \
+    pillow \
+    graphviz \
+    numpy \
+    pandas \
+    seaborn \
+    matplotlib \
+    Cython \
+    scipy \
+    scikit-learn \
+    tensorflow \
+    keras \
+    torchvision \
+    mxnet-mkl \
+    statsmodels \
+    pyspark"
+RUN /opt/conda/bin/conda install ${CONDA_PACKAGES} python=3.6.8 --yes && \
+  conda clean --yes --all
+
+ENV PIP_PACKAGES="\
+    Flask-Script \
+    Flask-Migrate \
+    Flask-CLI \
+    flask-batch \
+    torch \
+    tqdm \
+    koalanlp \
+    xgboost \
+    progressbar" 
+RUN pip install -U -v ${PIP_PACKAGES}
+
+WORKDIR /root
+RUN git clone https://github.com/kakao/khaiii.git
+RUN mkdir /root/khaiii/build
+WORKDIR /root/khaiii/build
+
+RUN cmake ..
+RUN make all
+RUN make resource
+# RUN make large_resource
+RUN make install
+RUN make package_python
+WORKDIR /root/khaiii/build/package_python
+RUN pip install .
+# from koalanlp.Util import initialize
+# 꼬꼬마와 ETRI 분석기의 2.0.4 버전을 참조합니다.
+# initialize(java_options="-Xmx4g", KKMA="2.0.4", ETRI="2.0.4")

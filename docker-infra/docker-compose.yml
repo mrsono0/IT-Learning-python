@@ -1,0 +1,121 @@
+version: '3.7'
+
+services:
+  workspace:
+    image: mrsono0/base_project:alpine_base
+    container_name: it_learning_python_workspace
+    hostname: workspace
+    ports:
+      - "22"
+    volumes:
+      - workspace_volume:/workspace
+      - workspace_db:/workspace/db_data
+    # entrypoint: /usr/local/bin/entrypoint.sh
+    # command: /usr/bin/supervisord -n
+
+  # ide:
+  #   image: mrsono0/it_learning_python:ide
+  #   container_name: it_learning_python_ide
+  #   hostname: ide
+  #   ports:
+  #     - "22"
+  #     - "33890:3389"
+  #   volumes:
+  #     - workspace_volume:/workspace
+  #   #   - workspace_db:/workspace/db_data
+  #   # entrypoint: /usr/local/bin/entrypoint.sh
+  #   # command: /usr/bin/supervisord -c /etc/supervisor/supervisord.conf
+
+  jupyterlab:
+    image: mrsono0/it_learning_python:jupyterlab
+    container_name: it_learning_python_jupyterlab
+    hostname: jupyterlab
+    ports:
+      - "22"
+      - "8888:8888"
+    volumes:
+      - workspace_volume:/workspace
+    environment:
+      notebook_dir: "--notebook-dir=/workspace"
+      JUPYTER_ENABLE_LAB: "yes"
+
+  # mariadb:
+  #   image: mrsono0/base_project:mariadb_alpine
+  #   container_name:  it_learning_python_mariadb
+  #   hostname: mariadb
+  #   ports:
+  #     - "22"
+  #     - "3306:3306"
+  #   volumes:
+  #     - workspace_volume:/workspace
+  #     - workspace_db:/var/lib/mysql
+  #   entrypoint: /usr/local/bin/entrypoint.sh
+  #   command: /scripts/run_mariadb.sh
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: mariadb
+  #     MYSQL_DATABASE: mariadb
+  #     MYSQL_USER: mariadb
+  #     MYSQL_PASSWORD: mariadb
+
+  flask:
+    image: mrsono0/it_learning_python:flask
+    container_name:  it_learning_python_flask
+    hostname: flask
+    volumes:
+      - workspace_volume:/workspace
+    ports:
+      - "22"
+      - "80:80"
+    environment:
+      - FLASK_APP=main
+      - FLASK_DEBUG=1
+    entrypoint: ["entrypoint_flask.sh"]
+    command: ["flask", "run", "--host=0.0.0.0", "--port=80"]
+
+  # redmine:
+  #   image: mrsono0/base_project:redmine_alpine
+  #   container_name:  it_learning_python_redmine
+  #   hostname: redmine
+  #   ports:
+  #     - "22"
+  #     - "3000:3000"
+  #   volumes:
+  #     - workspace_volume:/workspace
+  #   entrypoint: /root/entrypoint_redmine.sh
+  #   command: ["rails", "server", "-b", "0.0.0.0"]
+  #   environment:
+  #     DB_ADAPTER: mysql2
+  #     DB_HOST: mariadb
+  #     DB_PASSWORD: mariadb
+  #     DB_USER: mariadb
+  #     DB_NAME: mariadb
+
+  # jenkins:
+  #   image: mrsono0/base_project:jenkins_alpine
+  #   container_name:  it_learning_python_jenkins
+  #   hostname: jenkins
+  #   ports:
+  #     - "22"
+  #     - "8080:8080"
+  #     - "5000:5000"
+  #   volumes:
+  #     - /var/jenkins_home
+  #     - workspace_volume:/workspace
+  #   entrypoint: /usr/local/bin/entrypoint.sh
+  #   command: ["/usr/local/bin/jenkins.sh"]
+
+volumes:
+  workspace_volume:
+    driver: local
+    name: workspace_volume
+    driver_opts:
+      type: bind
+      device: /D/workspace/visual-studio-code/IT_Learning_python/workspace
+      o: bind
+  workspace_db:
+    # driver: local
+    # name: workspace_db
+    # driver_opts:
+    #   type: bind
+    #   device: /D/workspace/visual-studio-code/IT-Learning-python/workspace/db_data
+    #   o: bind
