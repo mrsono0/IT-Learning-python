@@ -1,13 +1,13 @@
-FROM mrsono0/base_project:jupyter_alpine
+FROM mrsono0/base_project:flask_alpine
 
 RUN echo "http://dl-3.alpinelinux.org/alpine/v3.8/main" > /etc/apk/repositories && \
     echo "http://dl-3.alpinelinux.org/alpine/v3.8/community" >> /etc/apk/repositories && \
     echo "http://dl-3.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
 RUN apk update && \
     apk upgrade &&\
-    apk add openjdk8 cmake build-base
+    apk add openjdk8 build-base
 
-RUN /opt/conda/bin/conda install conda python=3.6.8 --yes 
+RUN /opt/conda/bin/conda install conda --yes 
 
 ENV CONDA_PACKAGES="\
     pyyaml \
@@ -41,7 +41,7 @@ ENV CONDA_PACKAGES="\
     statsmodels \
     pyspark"
 RUN /opt/conda/bin/conda install ${CONDA_PACKAGES} python=3.6.8 --yes && \
-    conda clean --yes --all
+  conda clean --yes --all
 
 ENV PIP_PACKAGES="\
     Flask-Script \

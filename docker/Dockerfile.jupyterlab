@@ -1,0 +1,85 @@
+FROM mrsono0/base_project:jupyter_alpine_3_9
+
+RUN echo "http://dl-3.alpinelinux.org/alpine/v3.9/main" > /etc/apk/repositories && \
+    echo "http://dl-3.alpinelinux.org/alpine/v3.9/community" >> /etc/apk/repositories && \
+    echo "http://dl-3.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
+    echo "http://apk.nbgallery.s3-us-west-2.amazonaws.com/alpine38" >> /etc/apk/repositories
+RUN apk update && \
+    apk upgrade &&\
+    apk add build-base openjdk8
+
+# RUN /opt/conda/bin/conda install conda python=3.6.8 --yes 
+RUN conda update -n base -c defaults conda -y
+
+ENV CONDA_PACKAGES="\
+    pyyaml \
+    cffi \
+    h5py \
+    pytest \
+    coverage \
+    pylint \
+    pygments \
+    cryptography \
+    pexpect \
+    tornado \
+    jinja2 \
+    mkl \
+    Flask \
+    Flask-SQLAlchemy \
+    pillow \
+    graphviz \
+    seaborn \
+    matplotlib \
+    tqdm \
+    pymysql \
+    sqlalchemy \
+    paramiko \
+    statsmodels \
+    Cython \
+    pyspark \
+    "
+    # scipy \
+    # scikit-learn \
+    # tensorflow \
+    # keras \
+    # torchvision \
+    # mxnet-mkl \
+
+# RUN /opt/conda/bin/conda install ${CONDA_PACKAGES} python=3.6.8 --yes && \
+RUN /opt/conda/bin/conda install ${CONDA_PACKAGES} --yes
+# RUN conda install -c conda-forge folium --yes
+RUN conda clean --yes --all
+ENV PIP_PACKAGES="\
+    Flask-Script \
+    Flask-Migrate \
+    Flask-CLI \
+    flask-batch \
+    torch \
+    koalanlp \
+    xgboost \
+    folium \
+    progressbar" 
+RUN pip install -U -v ${PIP_PACKAGES}
+
+RUN conda install -c conda-forge \
+    cling \
+    xeus-cling
+
+WORKDIR /root
+RUN git clone https://github.com/kakao/khaiii.git
+RUN mkdir /root/khaiii/build
+WORKDIR /root/khaiii/build
+
+RUN cmake ..
+RUN make all
+RUN make resource
+# RUN make large_resource
+RUN make install
+RUN make package_python
+WORKDIR /root/khaiii/build/package_python
+RUN pip install .
+# from koalanlp.Util import initialize
+# 꼬꼬마와 ETRI 분석기의 2.0.4 버전을 참조합니다.
+# initialize(java_options="-Xmx4g", KKMA="2.0.4", ETRI="2.0.4")
+
+WORKDIR /workspace

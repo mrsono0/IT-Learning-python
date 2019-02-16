@@ -29,7 +29,7 @@
 
 ```
     docker build -f Dockerfile.jupyterlab --tag mrsono0/it_learning_python:jupyterlab .
-    docker run --rm -it -p 8888:8888 -p 2222:22 mrsono0/it_learning_python:jupyterlab
+    docker run --rm -it -p 8888:8888 -p 2222:22 -e JUPYTER_ENABLE_LAB=yes mrsono0/it_learning_python:jupyterlab
     docker tag it_learning_python:jupyterlab mrsono0/it_learning_python:jupyterlab
     docker push mrsono0/it_learning_python:jupyterlab
 ```
