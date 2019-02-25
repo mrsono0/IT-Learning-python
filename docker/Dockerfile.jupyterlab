@@ -37,18 +37,15 @@ ENV CONDA_PACKAGES="\
     statsmodels \
     Cython \
     pyspark \
+    scipy \
+    scikit-learn \
+    missingno \
+    plotnine \
+    folium \
     "
-    # scipy \
-    # scikit-learn \
-    # tensorflow \
-    # keras \
-    # torchvision \
-    # mxnet-mkl \
-
 # RUN /opt/conda/bin/conda install ${CONDA_PACKAGES} python=3.6.8 --yes && \
-RUN /opt/conda/bin/conda install ${CONDA_PACKAGES} --yes
-# RUN conda install -c conda-forge folium --yes
-RUN conda clean --yes --all
+RUN /opt/conda/bin/conda install -c conda-forge ${CONDA_PACKAGES} --yes
+
 ENV PIP_PACKAGES="\
     Flask-Script \
     Flask-Migrate \
@@ -58,12 +55,23 @@ ENV PIP_PACKAGES="\
     koalanlp \
     xgboost \
     folium \
-    progressbar" 
+    progressbar \
+    torchvision \
+    mxnet-mkl \
+    # tensorflow \
+    # keras \
+    " 
 RUN pip install -U -v ${PIP_PACKAGES}
 
 RUN conda install -c conda-forge \
     cling \
-    xeus-cling
+    xeus-cling \
+    blaze \
+    py4j 
+    # \
+    # tensorflow \
+    # keras 
+RUN conda clean --yes --all
 
 WORKDIR /root
 RUN git clone https://github.com/kakao/khaiii.git
@@ -81,5 +89,26 @@ RUN pip install .
 # from koalanlp.Util import initialize
 # 꼬꼬마와 ETRI 분석기의 2.0.4 버전을 참조합니다.
 # initialize(java_options="-Xmx4g", KKMA="2.0.4", ETRI="2.0.4")
+
+# RUN export PYSPARK_DRIVER_PYTHON="jupyter"  >> /etc/profile
+# RUN export PYSPARK_PYTHON=python3  >> /etc/profile
+# RUN echo "export PYSPARK_DRIVER_PYTHON_OPTS='notebook --notebook-dir=/workspace --port=8888 --no-browser --allow-root --ip=0.0.0.0 --NotebookApp.token='" >> /etc/profiles
+# RUN sed -i "s/PYSPARK_DRIVER_PYTHON=ipython/PYSPARK_DRIVER_PYTHON=jupyter/g" /etc/profile
+# RUN echo 'export PYSPARK_DRIVER_PYTHON_OPTS="lab --notebook-dir=/workspace --port=8888 --no-browser --allow-root --ip=0.0.0.0 --NotebookApp.token="'  >> /etc/profile
+
+# RUN WORKDIR/usr/local/share/jupyter/kernels/pyspark
+# RUN mkdir -p /usr/local/share/jupyter/kernels/pyspark/
+# RUN echo '{' > /usr/local/share/jupyter/kernels/pyspark/kernel.json
+# RUN echo '  "display_name": "PySpark", ' >> /usr/local/share/jupyter/kernels/pyspark/kernel.json
+# RUN echo '  "language": "python", ' >> /usr/local/share/jupyter/kernels/pyspark/kernel.json
+# RUN echo '  "argv": [ "/opt/conda/bin/python", "-m", "ipykernel", "-f", "{connection_file}" ], ' >> /usr/local/share/jupyter/kernels/pyspark/kernel.json
+# RUN echo '  "env": { ' >> /usr/local/share/jupyter/kernels/pyspark/kernel.json
+# RUN echo '    "SPARK_HOME": "/usr/spark-2.2.0", ' >> /usr/local/share/jupyter/kernels/pyspark/kernel.json
+# RUN echo '    "PYSPARK_PYTHON": "/opt/conda/bin/python", ' >> /usr/local/share/jupyter/kernels/pyspark/kernel.json
+# RUN echo '    "PYTHONPATH": "/usr/spark/python/python/:/usr/spark/python/lib/py4j-0.9-src.zip", ' >> /usr/local/share/jupyter/kernels/pyspark/kernel.json
+# RUN echo '    "PYTHONSTARTUP": "/usr/spark/python/pyspark/shell.py", ' >> /usr/local/share/jupyter/kernels/pyspark/kernel.json
+# RUN echo '    "PYSPARK_SUBMIT_ARGS": "--master yarn-client pyspark-shell" ' >> /usr/local/share/jupyter/kernels/pyspark/kernel.json
+# RUN echo '  } ' >> /usr/local/share/jupyter/kernels/pyspark/kernel.json
+# RUN echo '} ' >> /usr/local/share/jupyter/kernels/pyspark/kernel.json
 
 WORKDIR /workspace

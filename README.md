@@ -29,7 +29,9 @@
 
 ```
     docker build -f Dockerfile.jupyterlab --tag mrsono0/it_learning_python:jupyterlab .
-    docker run --rm -it -p 8888:8888 -p 2222:22 -e JUPYTER_ENABLE_LAB=yes mrsono0/it_learning_python:jupyterlab
+    docker build -f Dockerfile.jupyter --tag mrsono0/it_learning_python:jupyter .
+    docker run --rm -it -p 8888:8888 -e JUPYTER_ENABLE_LAB=pyspark mrsono0/it_learning_python:jupyterlab
+    docker run --rm -it -p 8888:8888 -e JUPYTER_ENABLE_LAB=pyspark mrsono0/it_learning_python:jupyter
     docker tag it_learning_python:jupyterlab mrsono0/it_learning_python:jupyterlab
     docker push mrsono0/it_learning_python:jupyterlab
 ```
