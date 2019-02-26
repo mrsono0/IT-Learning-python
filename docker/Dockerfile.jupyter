@@ -1,12 +1,21 @@
 FROM mrsono0/base_project:jupyter_disco
 
 ENV DEBIAN_FRONTEND noninteractive
-RUN sed -i "s/archive.ubuntu.com/mirror.kakao.com/g" /etc/apt/sources.list
-# RUN sed -i "s/archive.canonical.com/mirror.kakao.com/g" /etc/apt/sources.list
-RUN sed -i "s/security.ubuntu.com/mirror.kakao.com/g" /etc/apt/sources.list
-RUN sed -i "s/# deb-src/deb-src/g" /etc/apt/sources.list
-RUN apt-get -y update --fix-missing
-RUN apt-get -yy upgrade
+RUN sed -i "s/archive.ubuntu.com/mirror.kakao.com/g" /etc/apt/sources.list && \
+    # sed -i "s/archive.canonical.com/mirror.kakao.com/g" /etc/apt/sources.list && \
+    sed -i "s/security.ubuntu.com/mirror.kakao.com/g" /etc/apt/sources.list && \
+    sed -i "s/# deb-src/deb-src/g" /etc/apt/sources.list && \
+    apt-get -y update --fix-missing && \
+    apt-get -yy upgrade && \
+    apt-get install -y openjdk-8-jdk
+
+ENV JAVA_INSTALL_PATH /usr/lib/jvm/java-8-openjdk-amd64
+RUN	rm -f /usr/lib/jvm/default-jvm /usr/lib/jvm/latest; \
+    ln -sf "$JAVA_INSTALL_PATH" /usr/lib/jvm/default-jvm; \
+	ln -sf "$JAVA_INSTALL_PATH" /usr/lib/jvm/latest
+RUN cd /usr/local/bin \
+    && ln -sf "${JAVA_HOME}"/bin/java java \
+    && ln -sf "${JAVA_HOME}"/bin/javac javac
 
 # RUN /opt/conda/bin/conda install conda python=3.6.8 --yes 
 RUN conda update -n base -c defaults conda -y
@@ -56,7 +65,8 @@ ENV PIP_PACKAGES="\
     xgboost \
     torchvision \
     mxnet-mkl \
-    # koalanlp \
+    koalanlp \
+    jupyter_c_kernel \
     " 
 RUN pip install -U -v ${PIP_PACKAGES}
 
@@ -64,10 +74,9 @@ RUN conda install -c conda-forge \
     cling \
     xeus-cling \
     blaze \
-    py4j 
-    # \
-    # tensorflow \
-    # keras 
+    py4j \
+    tensorflow \
+    keras 
 RUN conda clean --yes --all
 
 WORKDIR /root

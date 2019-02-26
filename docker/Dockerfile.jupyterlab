@@ -8,6 +8,13 @@ RUN apk update && \
     apk upgrade &&\
     apk add build-base openjdk8
 
+ENV JAVA_INSTALL_PATH /usr/lib/jvm/java-8-openjdk-amd64
+RUN	ln -sf "$JAVA_INSTALL_PATH" /usr/lib/jvm/default-jvm; \
+	ln -sf "$JAVA_INSTALL_PATH" /usr/lib/jvm/latest
+RUN cd /usr/local/bin \
+    && ln -sf "${JAVA_HOME}"/bin/java java \
+    && ln -sf "${JAVA_HOME}"/bin/javac javac
+
 # RUN /opt/conda/bin/conda install conda python=3.6.8 --yes 
 RUN conda update -n base -c defaults conda -y
 
@@ -52,14 +59,15 @@ ENV PIP_PACKAGES="\
     Flask-CLI \
     flask-batch \
     torch \
-    koalanlp \
     xgboost \
     folium \
     progressbar \
     torchvision \
     mxnet-mkl \
-    # tensorflow \
-    # keras \
+    koalanlp \
+    tensorflow \
+    # keras  \
+    jupyter_c_kernel \
     " 
 RUN pip install -U -v ${PIP_PACKAGES}
 
@@ -68,9 +76,6 @@ RUN conda install -c conda-forge \
     xeus-cling \
     blaze \
     py4j 
-    # \
-    # tensorflow \
-    # keras 
 RUN conda clean --yes --all
 
 WORKDIR /root
