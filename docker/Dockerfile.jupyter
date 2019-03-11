@@ -74,9 +74,9 @@ RUN conda install -c conda-forge \
     cling \
     xeus-cling \
     blaze \
-    py4j \
-    tensorflow \
-    keras 
+    py4j 
+    # tensorflow \
+    # keras 
 RUN conda clean --yes --all
 
 WORKDIR /root
@@ -95,5 +95,11 @@ RUN pip install .
 # from koalanlp.Util import initialize
 # 꼬꼬마와 ETRI 분석기의 2.0.4 버전을 참조합니다.
 # initialize(java_options="-Xmx4g", KKMA="2.0.4", ETRI="2.0.4")
+
+RUN rm -rf /opt/conda/share/jupyter/kernels/clojure && \
+    rm -rf /opt/conda/share/jupyter/kernels/groovy && \
+    rm -rf /opt/conda/share/jupyter/kernels/kotlin
+
+EXPOSE 4040 8888
 
 WORKDIR /workspace

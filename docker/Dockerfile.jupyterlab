@@ -65,7 +65,7 @@ ENV PIP_PACKAGES="\
     torchvision \
     mxnet-mkl \
     koalanlp \
-    tensorflow \
+    # tensorflow \
     # keras  \
     jupyter_c_kernel \
     " 
